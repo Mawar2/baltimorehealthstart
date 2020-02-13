@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--<link rel="stylesheet" href="../static/style.css" /> -->
+    <title>Welcome to the BHS prototype</title>
+  </head>
+  
+  <body>
+    <div class="container">
+    <img src="/static/HealthyStart_logo.png" />
+    {% if message %}
+    <p class="message">{{ message | safe }}</p>
+    {% endif %}
+
+    <form action="/submit" method="POST">
+    <div class="form-group">
+    <h3>Client name</h3>
+    <input
+        type="text"
+        name="client"
+        placeholder="Enter first name"
+    />
+    </div>
+
+  
+    <div class="form-group">
+        <h3>social security #</h3>
+        <!-- @todo input validation insert '-' for formatting? -->
+        
+        <input
+        type="text"
+        id="ssn" maxlength="11"
+        name="ssn"
+        placeholder="XXX - XX - XXXX"
+      </div>
+    
+
+    <div class="form-group">
+        <h3>Education & Employement Assessment</h3>
+        <h4>How much schooling do you want to complete?</h4>
+            <!-- @todo associate selections with values to store in database --></h4>
+        <select name="education">
+          <option value="High school/GED">High school/GED</option>
+          <option value="Trade School">Trade School</option>
+          <option value="Some college">Some college</option>
+          <option value="College">College</option>
+          <option value="Have completed all that I need">Have completed all that I need</option>
+          <!-- @todo input validation [IF Selected skip to E5] -->
+          <option value="Haven't thought about it/don't know">Haven't thought about it/don't know</option>
+          <option value="Refuse">Refuse</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <h3>First time at BHS?</h3>
+      <input type="radio" name="BHS" value="first_reponse">Yes </input><br>
+      <input type="radio" name="BHS" value="first_reponse">No </input><br>
+      <input type="radio" name="BHS" value="first_reponse">Refuse </input><br>
+    </div>
+
+    <div class="form-group">
+      <h3>Comments about your experience</h3>
+      <textarea
+        name="comments"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="Tell us what you liked and/or did not like"
+      ></textarea>
+    </div>
+
+    <!---
+<form method="POST" action="/index">
+    <p>Is this your first time with BHS?</p>
+<input type="radio" name="health_type" value="first_reponse">Yes </input><br>
+<input type="radio" name="health_type" value="first_reponse">No </input><br>
+<input type="radio" name="health_type" value="first_reponse">Refuse </input><br>
+    -->
+
+    <input type="submit" value="Submit" class="btn" />
+  </form>
+</div>
+</body>
+</html>
